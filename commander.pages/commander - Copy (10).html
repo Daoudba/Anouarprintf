@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Commandez en ligne tous types d’impressions et recevez des supports de qualité supérieure, livrés partout au Maroc.
+    Découvrez nos produits et faites confiance à Anouar Print pour toutes vos impressions.">
+    <meta name="keywords" content="Morocco , Maruecos , Ouarzazate , Touristic , Dezert , Tour">
+    <link rel="stylesheet" href="commander.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <title>Anouarprintf</title>
+</head>
+<body>
+    <header>
+  <nav class="navigation" >
+    <a href="../index.html">
+      <img src="logo.png" class="logo" width="120" oncontextmenu="return false;" draggable="false" style="user-select:none; -webkit-user-drag: none;">
+    </a>
+
+    <ul class="right-links">
+      <li>
+        <a href="https://wa.me/212779737546" target="_blank"><span>Contact</span>
+        <i class="fa-brands fa-whatsapp"></i></a>
+      </li>
+
+      <li>
+        <a href="../index.html#produits"><span>Produits</span>
+        <i class="fa-solid fa-cart-shopping"></i></a>
+      </li>
+
+      <li>
+        <a href="../index.html#Apropos"><span>À propos</span>
+        <i class="fa-solid fa-shop" ></i></a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+
+
+<div class="title-bar">
+    <h1>Cachets & Tampons</h1>
+  </div>
+  
+<section class="product-section">
+    <div class="product-container">
+  
+      <!-- Image -->
+      <div class="product-image slider">
+        <img src="image produits/tampon (1).png" class="slide active" alt="">
+        <img src="image produits/tampon (2).png" class="slide" alt="">
+      
+        <button class="nav prev" onclick="prevSlide()">‹</button>
+        <button class="nav next" onclick="nextSlide()">›</button>
+      </div>
+      
+  
+      <!-- Order box -->
+      <div class="order-box">
+  
+        <label>
+          المدينة / Ville
+        </label>
+        <input type="text" id="ville" placeholder="مثال: Casablanca" autocomplete="off">
+  
+        <label>
+          الكمية / Quantité
+        </label>
+        <input type="number" id="quantite" placeholder="مثال: 10" min="1" required>
+  
+        <button id="orderBtn" disabled
+        onclick="sendWhatsApp()">
+          Commander
+        </button>
+      </div>
+  
+    </div>
+  </section>
+
+  
+  
+
+    
+    <footer class="footer">
+        <div class="footer-container">
+
+          <div class="footer-column">
+            <img src="logo2.png" width="200px" oncontextmenu="return false;" draggable="false" style="user-select:none; -webkit-user-drag: none; padding-bottom: 10px;">
+            <p>Sélectionnez votre produits, puis contactez-nous sur WhatsApp.
+              Nous réalisons votre impression sur mesure, selon vos besoins.</p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contacter Nous</h3>
+            <ul>
+              <li>printanouar@gmail.com</li>
+              <li>+212 779737546</li>
+            </ul>
+          </div>
+        
+          <div class="footer-column">
+            <h3>liens rapides</h3>
+            <ul>
+                <li><a href="../index.html#logo">Acceuil</a></li>
+                <li><a href="../index.html#catégories">catégories</a></li>
+                <li><a href="../index.html#Apropos">À propos</a></li>
+            </ul>
+          </div>
+
+       <div class="footer-column">
+            <img src="logo Daoud.png" width="170px" oncontextmenu="return false;" draggable="false" style="user-select:none; -webkit-user-drag: none; padding-bottom: 10px; margin-left: 40px;">
+            <h4>Besoin d’un site web professionnel adapté à vos besoins ?</h4><p>Contactez-moi sur WhatsApp</p>
+          <div class="social-icons">
+              <a href="https://wa.me/212653740582" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></div>
+          </div>
+        </div>
+      </footer>  
+
+      <script>
+        const villeInput = document.getElementById("ville");
+        const quantiteInput = document.getElementById("quantite");
+        const orderBtn = document.getElementById("orderBtn");
+        
+        villeInput.addEventListener("input", () => {
+          villeInput.value = villeInput.value.replace(/[^a-zA-Z\u0600-\u06FF\s]/g, "");
+          checkFields();
+        });
+        
+        function checkFields() {
+          if (
+            villeInput.value.trim() !== "" &&
+            quantiteInput.value.trim() !== ""
+          ) {
+            orderBtn.disabled = false;
+          } else {
+            orderBtn.disabled = true;
+          }
+        }
+        
+        quantiteInput.addEventListener("input", checkFields);
+        
+        function sendWhatsApp() {
+          const ville = villeInput.value.trim();
+          const quantite = quantiteInput.value.trim();
+        
+          const phone = "212779737546";
+        
+          const message =
+        `Bonjour,
+        Je souhaite commander: Cachets & Tampons.
+        
+        Ville: ${ville}
+        Quantité: ${quantite}
+        
+        Plus de détails:`; 
+        
+          window.open(
+            `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+            "_blank"
+          );
+        }
+        
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove("active"));
+  slides[index].classList.add("active");
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+
+setInterval(nextSlide, 5000);
+
+quantiteInput.addEventListener("input", () => {
+  if (quantiteInput.value !== "" && Number(quantiteInput.value) < 1) {
+    quantiteInput.value = 1;
+  }
+});
+
+        </script>
+        
+        
+        
+</body>
+</html>
